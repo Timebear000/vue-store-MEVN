@@ -10,3 +10,14 @@ exports.findAll = (req, res) => {
       res.status(404).send({ message: err.message });
     });
 };
+exports.findOne = (req, res) => {
+  Product.findOne({
+    code: req.params.id,
+  })
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      res.status(404).send({ message: err.message });
+    });
+};
