@@ -1,6 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
-
+const cors = require("cors");
 const app = express();
 const path = require("path");
 const PORT = process.env.PORT || 8000;
@@ -24,6 +24,7 @@ db.mongoose
     process.exit();
   });
 app.use(morgan("dev"));
+app.use(cors());
 app.get("/", (req, res) => {
   res.json({
     message: "Welcome to vuestore-server",
